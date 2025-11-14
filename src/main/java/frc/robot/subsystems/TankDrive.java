@@ -19,8 +19,8 @@ public class TankDrive extends SubsystemBase {
     }
 
     public void drive(double x, double y) {
-        double left_power = (x + y)* DriveConstants.kspeed;
-        double right_power = (x - y) * DriveConstants.kspeed;
+        double left_power = (-x + y)* DriveConstants.kspeed;
+        double right_power = (-x - y) * DriveConstants.kspeed;
 
         // bounding
         if (left_power > 1) left_power = 1;
