@@ -9,9 +9,15 @@ import frc.robot.Constants.motornumber;
 public class Intake extends SubsystemBase{
   
   private SparkMax intakeMotor;
+  private double intakePower;
 
   public Intake() {
     intakeMotor = new SparkMax(motornumber.kIntakeMotorID, MotorType.kBrushed);
+    intakePower = 0.7;
+  }
+
+  public void intaking() {
+    intakeMotor.set(intakePower);
   }
   
 }
