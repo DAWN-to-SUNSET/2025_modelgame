@@ -13,7 +13,7 @@ public class Intake extends SubsystemBase{
 
   public Intake() {
     intakeMotor = new SparkMax(motornumber.kIntakeMotorID, MotorType.kBrushed);
-    intakePower = 0.7;
+    intakePower = 0.7;  //undone
   }
 
   public void intaking() {

@@ -23,7 +23,7 @@ public class Move extends Command {
 
   @Override
   public void execute() {
-		m_tankdrive.drive(x.get(),y.get());  //undone
+		m_tankdrive.drive(x.get(),y.get());
 	}
 
   @Override
