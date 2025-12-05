@@ -37,7 +37,6 @@ public class RobotContainer {
     configureBindings();
 
     // move
-    // go learn lambda !!
     m_tankDrive.setDefaultCommand(new Move(m_tankDrive, () -> {return m_joystick.getX();}, () -> {return m_joystick.getY();}));
   }
 
