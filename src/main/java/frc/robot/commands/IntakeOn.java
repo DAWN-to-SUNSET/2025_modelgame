@@ -22,7 +22,9 @@ public class IntakeOn extends Command{
   }
 
   @Override
-  public void end(boolean interrupted) {}
+  public void end(boolean interrupted) {
+    m_Intake.stop();
+  }
 
   @Override
   public boolean isFinished() {
