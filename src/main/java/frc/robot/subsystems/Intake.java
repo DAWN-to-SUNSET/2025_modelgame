@@ -1,5 +1,6 @@
 package frc.robot.subsystems;
 
+import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
 import com.revrobotics.spark.SparkMax;
 import com.revrobotics.spark.SparkLowLevel.MotorType;
 
@@ -8,20 +9,20 @@ import frc.robot.Constants.motornumber;
 
 public class Intake extends SubsystemBase{
   
-  private SparkMax intakeMotor;
+  private WPI_VictorSPX intakeMotor;
   private double intakePower;
 
   public Intake() {
-    intakeMotor = new SparkMax(motornumber.kIntakeMotorID, MotorType.kBrushed);
-    intakePower = 0.7;  //undone
+    intakeMotor = new WPI_VictorSPX(motornumber.kIntakeMotorID);
+    intakePower = 0.75;  
   }
 
   public void intaking() {
-    intakeMotor.set(intakePower);
+    intakeMotor.set(intakePower);;
   }
 
   public void stop() {
-    intakeMotor.set(0);
+    intakeMotor.set(0);;
   }
   
 }
