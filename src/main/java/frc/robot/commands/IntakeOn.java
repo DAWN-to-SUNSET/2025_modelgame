@@ -1,15 +1,13 @@
 package frc.robot.commands;
 
-import java.util.function.Supplier;
-
 import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.subsystems.Intake;
 
 public class IntakeOn extends Command{
-  private final Intake m_Intake;
+  private final Intake m_intake;
 
   public IntakeOn(Intake intake) {
-    m_Intake = intake;
+    m_intake = intake;
     addRequirements(intake);
   }
 
@@ -18,12 +16,12 @@ public class IntakeOn extends Command{
 
   @Override
   public void execute() {
-    m_Intake.intaking();
+    m_intake.intaking();
   }
 
   @Override
   public void end(boolean interrupted) {
-    m_Intake.stop();
+    m_intake.stop();
   }
 
   @Override

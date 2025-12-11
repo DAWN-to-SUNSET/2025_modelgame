@@ -11,7 +11,9 @@ import frc.robot.commands.IntakeOn;
 import frc.robot.subsystems.ExampleSubsystem;
 import frc.robot.subsystems.Intake;
 import frc.robot.subsystems.TankDrive;
+import frc.robot.subsystems.Transfer;
 import frc.robot.commands.Move;
+import frc.robot.commands.TransferOn;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
@@ -29,6 +31,7 @@ public class RobotContainer {
   private final ExampleSubsystem m_exampleSubsystem = new ExampleSubsystem();
   private final TankDrive m_tankDrive  = new TankDrive(1, 2, 3, 4);
   private final Intake m_intake = new Intake();
+  private final Transfer m_transfer = new Transfer();
 
   private final Joystick m_joystick = new Joystick(0);
   
@@ -41,6 +44,7 @@ public class RobotContainer {
     // move
     m_tankDrive.setDefaultCommand(new Move(m_tankDrive, () -> {return m_joystick.getX();}, () -> {return m_joystick.getY();}));
     new JoystickButton(m_joystick, 1).whileTrue(new IntakeOn(m_intake));
+    new JoystickButton(m_joystick, 2).whileTrue(new TransferOn(m_transfer));
   } 
 
   /**

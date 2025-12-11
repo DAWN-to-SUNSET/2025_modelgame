@@ -24,6 +24,7 @@ public final class Constants {
     public static final int kLeftRearWheelID = 4;
 
     public static final int kIntakeMotorID = 5;
+    public static final int kTransferMotorID = 6;
   }
   
   public static final class DriveConstants {
