@@ -11,7 +11,7 @@ public class Transfer extends SubsystemBase {
 
   public Transfer() {
     transferMotor = new WPI_VictorSPX(motornumber.kTransferMotorID);
-    transferPower = 0.75; 
+    transferPower = 0.5; 
   }
 
   public void transferring() {
