@@ -16,6 +16,7 @@ import frc.robot.commands.Move;
 import frc.robot.commands.TransferOn;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj2.command.Command;
+import edu.wpi.first.wpilibj2.command.ParallelCommandGroup;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import edu.wpi.first.wpilibj2.command.button.Trigger;
@@ -43,8 +44,8 @@ public class RobotContainer {
 
     // move
     m_tankDrive.setDefaultCommand(new Move(m_tankDrive, () -> {return m_joystick.getX();}, () -> {return m_joystick.getY();}));
-    new JoystickButton(m_joystick, 1).whileTrue(new IntakeOn(m_intake));
-    new JoystickButton(m_joystick, 2).whileTrue(new TransferOn(m_transfer));
+    new JoystickButton(m_joystick, 6).whileTrue(new ParallelCommandGroup(new IntakeOn(m_intake), new TransferOn(m_transfer)));                                                                                                                                                                                                                                                                                                                                                                                                                                                                            
+    
   } 
 
   /**
