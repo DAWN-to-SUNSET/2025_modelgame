@@ -12,8 +12,10 @@ import frc.robot.subsystems.ExampleSubsystem;
 import frc.robot.subsystems.Intake;
 import frc.robot.subsystems.TankDrive;
 import frc.robot.subsystems.Transfer;
+import frc.robot.subsystems.Direction;
 import frc.robot.commands.Move;
 import frc.robot.commands.TransferOn;
+import frc.robot.commands.Turning;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.ParallelCommandGroup;
@@ -33,6 +35,7 @@ public class RobotContainer {
   private final TankDrive m_tankDrive  = new TankDrive(1, 2, 3, 4);
   private final Intake m_intake = new Intake();
   private final Transfer m_transfer = new Transfer();
+  private final Direction m_direction = new Direction();
 
   private final Joystick m_joystick = new Joystick(0);
   
@@ -41,11 +44,14 @@ public class RobotContainer {
 
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() {
-
     // move
     m_tankDrive.setDefaultCommand(new Move(m_tankDrive, () -> {return m_joystick.getX();}, () -> {return m_joystick.getY();}));
+    
+    //intake + transfer
     new JoystickButton(m_joystick, 6).whileTrue(new ParallelCommandGroup(new IntakeOn(m_intake), new TransferOn(m_transfer)));                                                                                                                                                                                                                                                                                                                                                                                                                                                                            
     
+    // truning
+    m_direction.setDefaultCommand(new Turning(m_direction, () -> m_joystick.getRawAxis(2), () -> m_joystick.getRawAxis(3)));
   } 
 
   /**

@@ -5,7 +5,7 @@ import frc.robot.subsystems.Intake;
 
 public class IntakeOn extends Command{
   private final Intake m_intake;
-
+  
   public IntakeOn(Intake intake) {
     m_intake = intake;
     addRequirements(intake);

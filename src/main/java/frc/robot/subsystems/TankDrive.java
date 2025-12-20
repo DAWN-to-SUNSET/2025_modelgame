@@ -17,7 +17,7 @@ public class TankDrive extends SubsystemBase {
     }
 
     public void drive(double x, double y) {
-        double left_power = (-x + y)* DriveConstants.kspeed;
+        double left_power = (-x + y)* DriveConstants.kspeed; //kspeed still undone yet(還沒調整到最佳速度)
         double right_power = (-x - y) * DriveConstants.kspeed;
 
         // bounding
@@ -32,8 +32,6 @@ public class TankDrive extends SubsystemBase {
 
 }
 
-//youxiqwtui@gmail.com
-//DAWN-to-SUNSET
 
 
 //SHA256:bxej2kykD8fNkysLbyq+Cs3okcppcHaGfxMKRCUkaXM youxiqwtui@gmail.com

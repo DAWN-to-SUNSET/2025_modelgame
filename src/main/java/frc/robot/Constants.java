@@ -25,6 +25,10 @@ public final class Constants {
 
     public static final int kIntakeMotorID = 5;
     public static final int kTransferMotorID = 6;
+    public static final int kDirectionMotorID = 7;
+    public static final int kAngleMotorID = 8;
+    public static final int kShooterLowerMotorID = 9;
+    public static final int kshooterUpperMotorID = 10;
   }
   
   public static final class DriveConstants {
