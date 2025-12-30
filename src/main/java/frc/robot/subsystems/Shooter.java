@@ -4,8 +4,10 @@
 
 package frc.robot.subsystems;
 
+import com.ctre.phoenix.motorcontrol.can.VictorSPX;
 import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
 import com.revrobotics.spark.SparkMax;
+import com.revrobotics.spark.SparkBase.ControlType;
 import com.revrobotics.spark.SparkLowLevel.MotorType;
 
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
@@ -16,7 +18,6 @@ public class Shooter extends SubsystemBase {
   private WPI_VictorSPX lowerMotor;
   private WPI_VictorSPX upperMotor;
   private double shootPower;
-  private double anglePower;
 
 
   public Shooter() {
@@ -25,7 +26,6 @@ public class Shooter extends SubsystemBase {
     upperMotor = new WPI_VictorSPX(motornumber.kshooterUpperMotorID);
 
     shootPower = 0.7; //undone
-    anglePower = 0.7; //undone
   }
 
   public void shoot() {
@@ -34,10 +34,19 @@ public class Shooter extends SubsystemBase {
   }
 
   public void angleUp() {
-    angleMotor.set(anglePower);
+    angleMotor.getClosedLoopController().setReference(, ControlType.kPosition);
   }
   
   public void angleDown() {
     angleMotor.set(-anglePower);
+  }
+
+  public void angleStop() {
+    angleMotor.set(0);
+  }
+
+  public void shootStop() {
+    lowerMotor.set(0);
+    upperMotor.set(0);
   }
 }

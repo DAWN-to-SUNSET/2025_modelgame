@@ -4,24 +4,25 @@
 
 package frc.robot;
 
-import frc.robot.Constants.OperatorConstants;
+import frc.robot.commands.AngleDown;
+import frc.robot.commands.AngleUp;
 import frc.robot.commands.Autos;
-import frc.robot.commands.ExampleCommand;
 import frc.robot.commands.IntakeOn;
 import frc.robot.subsystems.ExampleSubsystem;
 import frc.robot.subsystems.Intake;
+import frc.robot.subsystems.Shooter;
 import frc.robot.subsystems.TankDrive;
 import frc.robot.subsystems.Transfer;
 import frc.robot.subsystems.Direction;
 import frc.robot.commands.Move;
+import frc.robot.commands.Shoot;
 import frc.robot.commands.TransferOn;
 import frc.robot.commands.Turning;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.ParallelCommandGroup;
-import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
-import edu.wpi.first.wpilibj2.command.button.Trigger;
+
 
 /**
  * This class is where the bulk of the robot should be declared. Since Command-based is a
@@ -36,6 +37,7 @@ public class RobotContainer {
   private final Intake m_intake = new Intake();
   private final Transfer m_transfer = new Transfer();
   private final Direction m_direction = new Direction();
+  private final Shooter m_shooter = new Shooter();
 
   private final Joystick m_joystick = new Joystick(0);
   
@@ -52,6 +54,15 @@ public class RobotContainer {
     
     // truning
     m_direction.setDefaultCommand(new Turning(m_direction, () -> m_joystick.getRawAxis(2), () -> m_joystick.getRawAxis(3)));
+    
+    //angle up
+    new JoystickButton(m_joystick, 4).whileTrue(new AngleUp(m_shooter));
+
+    //angle down
+    new JoystickButton(m_joystick, 1).whileTrue(new AngleDown(m_shooter));
+
+    //shoot 
+    new JoystickButton(m_joystick, 5).whileTrue(new Shoot(m_shooter));
   } 
 
   /**

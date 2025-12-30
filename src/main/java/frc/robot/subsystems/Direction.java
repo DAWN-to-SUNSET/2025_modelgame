@@ -22,6 +22,7 @@ public class Direction extends SubsystemBase {
 
   public void turn(double left, double right) {
     left = -left;
+
     directionPower = (left + right) *DriveConstants.kspeed;
 
     directionMotor.set(-directionPower);

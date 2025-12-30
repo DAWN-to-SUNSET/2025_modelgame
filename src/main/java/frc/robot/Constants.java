@@ -4,6 +4,8 @@
 
 package frc.robot;
 
+import com.revrobotics.spark.config.SparkMaxConfig;
+
 /**
  * The Constants class provides a convenient place for teams to hold robot-wide numerical or boolean
  * constants. This class should not be used for any other purpose. All constants should be declared
@@ -33,6 +35,19 @@ public final class Constants {
   
   public static final class DriveConstants {
     public static final double kspeed = 0.7; // undone
+  }
+
+  public static final class SparkConfig{
+    public static  SparkMaxConfig getConfig(){
+      SparkMaxConfig config = new SparkMaxConfig();
+      
+      config.closedLoop.pid(0, 0, 0);
+
+      config.softLimit.forwardSoftLimit(4.5);
+      config.softLimit.reverseSoftLimit(4.5);
+      
+      return config;
+    }
   }
 
 }
