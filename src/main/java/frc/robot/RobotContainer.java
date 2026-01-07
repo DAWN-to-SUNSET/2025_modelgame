@@ -4,8 +4,6 @@
 
 package frc.robot;
 
-import frc.robot.commands.AngleDown;
-import frc.robot.commands.AngleUp;
 import frc.robot.commands.Autos;
 import frc.robot.commands.IntakeOn;
 import frc.robot.subsystems.ExampleSubsystem;
@@ -53,14 +51,8 @@ public class RobotContainer {
     new JoystickButton(m_joystick, 6).whileTrue(new ParallelCommandGroup(new IntakeOn(m_intake), new TransferOn(m_transfer)));                                                                                                                                                                                                                                                                                                                                                                                                                                                                            
     
     // truning
-    m_direction.setDefaultCommand(new Turning(m_direction, () -> m_joystick.getRawAxis(2), () -> m_joystick.getRawAxis(3)));
+    m_direction.setDefaultCommand(new Turning(m_direction, () -> m_joystick.getRawAxis(3), () -> m_joystick.getRawAxis(2)));
     
-    //angle up
-    new JoystickButton(m_joystick, 4).whileTrue(new AngleUp(m_shooter));
-
-    //angle down
-    new JoystickButton(m_joystick, 1).whileTrue(new AngleDown(m_shooter));
-
     //shoot 
     new JoystickButton(m_joystick, 5).whileTrue(new Shoot(m_shooter));
   } 

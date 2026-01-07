@@ -5,6 +5,7 @@
 package frc.robot;
 
 import com.revrobotics.spark.config.SparkMaxConfig;
+import com.revrobotics.spark.config.SparkBaseConfig.IdleMode;
 
 /**
  * The Constants class provides a convenient place for teams to hold robot-wide numerical or boolean
@@ -28,26 +29,24 @@ public final class Constants {
     public static final int kIntakeMotorID = 5;
     public static final int kTransferMotorID = 6;
     public static final int kDirectionMotorID = 7;
-    public static final int kAngleMotorID = 8;
     public static final int kShooterLowerMotorID = 9;
-    public static final int kshooterUpperMotorID = 10;
+    public static final int kshooterUpperMotorID = 8;
   }
   
   public static final class DriveConstants {
-    public static final double kspeed = 0.7; // undone
+    public static final double kspeed = 0.7; 
   }
 
   public static final class SparkConfig{
-    public static  SparkMaxConfig getConfig(){
+    public static  SparkMaxConfig Config(boolean inverted){
       SparkMaxConfig config = new SparkMaxConfig();
       
-      config.closedLoop.pid(0, 0, 0);
-
-      config.softLimit.forwardSoftLimit(4.5);
-      config.softLimit.reverseSoftLimit(4.5);
-      
+      config.idleMode(IdleMode.kBrake).inverted(inverted);
+      /*              不動的時候外力可使馬達轉動 -> kCoast
+                      不動的時候外力無法使馬達轉動(強制固定) -> kBrake
+                      iverted -> 是否反轉
+      */
       return config;
     }
   }
-
 }

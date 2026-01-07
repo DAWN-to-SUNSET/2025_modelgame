@@ -16,11 +16,11 @@ public class Intake extends SubsystemBase{
   }
 
   public void intaking() {
-    intakeMotor.set(intakePower);
+    intakeMotor.setVoltage(intakePower*11.0); //setVoltage可直接控制輸出電壓，不因為電壓不足而減少輸出的力(相對於set)
   }
 
   public void stop() {
-    intakeMotor.set(0);;
+    intakeMotor.set(0);
   }
   
 }

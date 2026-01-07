@@ -18,7 +18,7 @@ public class Transfer extends SubsystemBase {
   }
 
   public void transferring() {
-    transferMotor.set(transferPower);
+    transferMotor.setVoltage(transferPower*11.0);
   }
 
   public void stop() {
